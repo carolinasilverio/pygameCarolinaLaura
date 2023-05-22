@@ -25,6 +25,25 @@ font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato_small = pygame.transform.scale(sapato,(sapato_largura, sapato_altura))
 
+#Novos 
+class sapato(pygame.sprite.Sprite):
+    def init(self,img):
+        pygame.sprite.Sprite.init(self)
+        self.image=img
+        self.rect=self.image.get_rect()
+        self.rect.x=random.randint(0, sapato_largura)
+        self.rect.y=random.randint(-100,sapato_altura)
+        self.vx=random.randint(-3,3)
+        self.vy=random.randint(2,9)
+
+    def update(self):
+        self.rect.x+=self.vx
+        self.rect.y+=self.vy
+        if self.rect.top > altura or self.rect.right  < 0 or self.rect.left > largura:
+            self.rect.x=random.randint(0, sapato_largura)
+            self.rect.y=random.randint(-100,sapato_altura)
+            self.vx=random.randint(-3,3)
+            self.vy=random.randint(2,9)
 #GAMETRUE 
 game = True
 
