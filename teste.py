@@ -41,7 +41,7 @@ game = True
 
 #Dados
 clock = pygame.time.Clock()
-FPS = 100
+FPS = 30
 
 sapato1 = sapatoclasse(sapato)
 sapato2 = sapatoclasse(sapato)
