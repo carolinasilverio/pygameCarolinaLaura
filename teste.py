@@ -6,14 +6,15 @@ pygame.init()
 #Configurações
 largura = 920
 altura = 640
+
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
 
 #Assets
 sapato_largura = 50
 sapato_altura = 38
-princesa_altura = 50
-princesa_largura = 38
+princesa_altura = 200
+princesa_largura = 152
 fundo = pygame.image.load('Pasta/Fundo.png').convert()
 font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
@@ -71,8 +72,8 @@ player = princesaclasse(princesa)
 all_sprites.add(player)
 
 for i in range(8):
-    sapato = sapatoclasse(sapato)
-    all_sprites.add(sapato)
+    sapatos = sapatoclasse(sapato)
+    all_sprites.add(sapatos)
 
 #Loop
 while game:
