@@ -6,7 +6,6 @@ pygame.init()
 #Configurações
 largura = 920
 altura = 640
-
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
 
@@ -81,6 +80,16 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                player.vx -=4
+            if event.key == pygame.K_RIGHT:
+                player.vx += 4
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                player.vx +=4
+            if event.key == pygame.K_RIGHT:
+                player.vx -= 4
     all_sprites.update()
     #Saídas
     window.fill((0, 0, 0)) 
