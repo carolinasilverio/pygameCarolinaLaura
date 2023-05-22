@@ -1,31 +1,25 @@
 #Importa pacotes
 import pygame
 import random
-
 pygame.init()
 
 #Configurações
-largura = 600
-altura = 400
+largura = 920
+altura = 640
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
-fundo = pygame.image.load('Pasta/Fundo.png').convert()
-fundo = pygame.transform.scale(fundo, (600, 480))
 
-#GAMETRUE
-game = True
-
-#Assets
 sapato_largura = 50
 sapato_altura = 38
+fundo = pygame.image.load('Pasta/Fundo.png').convert()
 font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
-sapato_small = pygame.transform.scale(sapato,(sapato_largura, sapato_altura))
+sapato = pygame.transform.scale(sapato, (sapato_largura, sapato_altura))
 
 #Novos 
 class sapatoclasse(pygame.sprite.Sprite):
-    def init(self,img):
-        pygame.sprite.Sprite.init(self)
+    def __init__(self,img):
+        pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(0, sapato_largura)
@@ -41,6 +35,7 @@ class sapatoclasse(pygame.sprite.Sprite):
             self.rect.y=random.randint(-100,-sapato_altura)
             self.vx=random.randint(-3,3)
             self.vy=random.randint(2,9)
+
 #GAMETRUE 
 game = True
 
@@ -62,7 +57,7 @@ while game:
     sapato2.update()
     
     #Saídas
-    window.fill((255, 255, 255))
+    window.fill((0, 0, 0)) 
     window.blit(fundo, (0,0))
     window.blit(sapato1.image, sapato1.rect)
     window.blit(sapato2.image, sapato2.rect)
