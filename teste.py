@@ -1,6 +1,7 @@
 #Importa pacotes
 import pygame
 import random
+
 pygame.init()
 
 #Configurações
@@ -20,6 +21,7 @@ sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato = pygame.transform.scale(sapato, (sapato_largura, sapato_altura))
 princesa = pygame.image.load('Pasta/Princesa.png')
 princesa = pygame.transform.scale(princesa, (princesa_largura, princesa_altura))
+pontuacao = pygame.font.SysFont(None, 28)
 
 #Novos 
 
@@ -30,7 +32,7 @@ class princesaclasse(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = largura/2
         self.rect.bottom = altura-10
-        self.vx = random.randint(-5,0)
+        self.vx = 0
         #self.vy = random.randint(2,9)
 
     def update(self):
@@ -67,12 +69,20 @@ clock = pygame.time.Clock()
 FPS = 30
 
 all_sprites = pygame.sprite.Group()
+all_sapatos = pygame.sprite.Group()
 player = princesaclasse(princesa)
 all_sprites.add(player)
 
 for i in range(8):
     sapatos = sapatoclasse(sapato)
     all_sprites.add(sapatos)
+    all_sapatos.add(sapatos)
+
+DONE = 0
+PLAYING = 1
+state = PLAYING
+
+score = 0
 
 #Loop
 while game:
@@ -80,21 +90,36 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                player.vx -=4
-            if event.key == pygame.K_RIGHT:
-                player.vx += 4
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                player.vx +=4
-            if event.key == pygame.K_RIGHT:
-                player.vx -= 4
+        if state == PLAYING:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    player.vx -= 8
+                if event.key == pygame.K_RIGHT:
+                    player.vx += 8
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT:
+                    player.vx += 8
+                if event.key == pygame.K_RIGHT:
+                    player.vx -= 8
     all_sprites.update()
+
+    #Colisão
+
+    hits = pygame.sprite.spritecollide(player, all_sapatos, True)
+    for hit in hits:
+        game += 10
     #Saídas
     window.fill((0, 0, 0)) 
     window.blit(fundo, (0,0))
     all_sprites.draw(window)
+
+    #Score
+
+    text_surface = pontuacao.render('{08d}'.format(score), True, (255, 255, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (largura/2, 10)
+    window.blit(text_surface, text_rect)
+
     #Atualiza jogo
     pygame.display.update()
 
