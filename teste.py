@@ -24,6 +24,9 @@ font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato_small = pygame.transform.scale(sapato,(sapato_largura, sapato_altura))
 
+#GAMETRUE 
+game = True
+
 #Dados
 sapatox = random.randint(0, sapato_largura)
 sapatoy = random.randint(-100,sapato_altura)
