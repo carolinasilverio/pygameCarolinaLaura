@@ -4,16 +4,16 @@ import random
 
 pygame.init()
 
-#Configurações
-largura = 600
-altura = 400
-window = pygame.display.set_mode((largura, altura))
-fundo = pygame.image.load('Pasta/Fundo.png').convert()
-fundo = pygame.transform.scale(fundo, (600, 480))
-
 #Tela 
 window = pygame.display.set_mode((600, 480))
 pygame.display.set_caption('Jornada da Princesa')
+
+#Configurações
+largura = 600
+altura = 400
+#window = pygame.display.set_mode((largura, altura))
+fundo = pygame.image.load('Pasta/Fundo.png').convert()
+fundo = pygame.transform.scale(fundo, (600, 480))
 
 #GAMETRUE
 game = True
