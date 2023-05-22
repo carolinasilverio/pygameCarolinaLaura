@@ -35,7 +35,7 @@ FPS = 100
 #Loop
 while game:
     clock.tick(FPS)
-    for event in pygame.event,get():
+    for event in pygame.event.get():
         #Consequências
         if event.type == pygame.QUIT:
             game = False
