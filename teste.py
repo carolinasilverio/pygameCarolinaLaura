@@ -59,5 +59,5 @@ while game:
     #Atualiza jogo
     pygame.display.update()
 
-    #Fim
-    pygame.quit()
+#Fim
+pygame.quit()
