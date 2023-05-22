@@ -4,14 +4,11 @@ import random
 
 pygame.init()
 
-#Tela 
-window = pygame.display.set_mode((600, 480))
-pygame.display.set_caption('Jornada da Princesa')
-
 #Configurações
 largura = 600
 altura = 400
-#window = pygame.display.set_mode((largura, altura))
+window = pygame.display.set_mode((largura, altura))
+pygame.display.set_caption('Jornada da Princesa')
 fundo = pygame.image.load('Pasta/Fundo.png').convert()
 fundo = pygame.transform.scale(fundo, (600, 480))
 
@@ -26,7 +23,7 @@ sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato_small = pygame.transform.scale(sapato,(sapato_largura, sapato_altura))
 
 #Novos 
-class sapato(pygame.sprite.Sprite):
+class sapatoclasse(pygame.sprite.Sprite):
     def init(self,img):
         pygame.sprite.Sprite.init(self)
         self.image=img
@@ -48,18 +45,16 @@ class sapato(pygame.sprite.Sprite):
 game = True
 
 #Dados
-
 clock = pygame.time.Clock()
 FPS = 100
 
-sapato1 = sapato(sapato)
-sapato2 = sapato(sapato)
+sapato1 = sapatoclasse(sapato)
+sapato2 = sapatoclasse(sapato)
 
 #Loop
 while game:
     clock.tick(FPS)
     for event in pygame.event.get():
-        #Consequências
         if event.type == pygame.QUIT:
             game = False
     #Atualiza jogo
