@@ -2,6 +2,8 @@
 import pygame
 import random
 
+pygame.init()
+
 #Configurações
 largura = 600
 altura = 400
