@@ -9,14 +9,37 @@ altura = 640
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
 
+#Assets
 sapato_largura = 50
 sapato_altura = 38
+princesa_altura = 50
+princesa_largura = 38
 fundo = pygame.image.load('Pasta/Fundo.png').convert()
 font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato = pygame.transform.scale(sapato, (sapato_largura, sapato_altura))
+princesa = pygame.image.load('Pasta/Princesa.png')
+princesa = pygame.transform.scale(princesa, (princesa_largura, princesa_altura))
 
 #Novos 
+
+class princesaclasse(pygame.sprite.Sprite):
+    def __init__(self,img):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.centerx = largura/2
+        self.rect.bottom = altura-10
+        self.vx = random.randint(-5,0)
+        #self.vy = random.randint(2,9)
+
+    def update(self):
+        self.rect.x += self.vx
+        if self.rect.right > largura:
+            self.rect.right = largura
+        if self.rect.left < 0:
+            self.rect.left = 0
+
 class sapatoclasse(pygame.sprite.Sprite):
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
@@ -43,8 +66,13 @@ game = True
 clock = pygame.time.Clock()
 FPS = 30
 
-sapato1 = sapatoclasse(sapato)
-sapato2 = sapatoclasse(sapato)
+all_sprites = pygame.sprite.Group()
+player = princesaclasse(princesa)
+all_sprites.add(player)
+
+for i in range(8):
+    sapato = sapatoclasse(sapato)
+    all_sprites.add(sapato)
 
 #Loop
 while game:
@@ -52,16 +80,11 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
-    #Atualiza jogo
-    sapato1.update()
-    sapato2.update()
-    
+    all_sprites.update()
     #Saídas
     window.fill((0, 0, 0)) 
     window.blit(fundo, (0,0))
-    window.blit(sapato1.image, sapato1.rect)
-    window.blit(sapato2.image, sapato2.rect)
-
+    all_sprites.draw(window)
     #Atualiza jogo
     pygame.display.update()
 
