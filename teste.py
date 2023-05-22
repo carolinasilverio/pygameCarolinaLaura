@@ -48,12 +48,12 @@ class sapato(pygame.sprite.Sprite):
 game = True
 
 #Dados
-sapatox = random.randint(0, sapato_largura)
-sapatoy = random.randint(-100,sapato_altura)
-sapato_vx = random.randint(-3,3)
-sapato_vy = random.randint(2,9)
+
 clock = pygame.time.Clock()
 FPS = 100
+
+sapato1 = sapato(sapato)
+sapato2 = sapato(sapato)
 
 #Loop
 while game:
@@ -63,18 +63,15 @@ while game:
         if event.type == pygame.QUIT:
             game = False
     #Atualiza jogo
-    sapatox += sapato_vx
-    sapatoy += sapato_vy
-    #Novas
-    if sapatoy > altura or sapatox + sapato_largura < 0 or sapatox > largura:
-        sapatox = random.randint(0, sapato_largura)
-        sapatoy = random.randint(-100,sapato_altura)
-        sapato_vx = random.randint(-3,3)
-        sapato_vy = random.randint(2,9)
+    sapato1.update()
+    sapato2.update()
+    
     #Saídas
     window.fill((255, 255, 255))
     window.blit(fundo, (0,0))
-    window.blit(sapato_small, (sapatox, sapatoy))
+    window.blit(sapato1.image, sapato1.rect)
+    window.blit(sapato2.image, sapato2.rect)
+
     #Atualiza jogo
     pygame.display.update()
 
