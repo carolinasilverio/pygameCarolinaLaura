@@ -29,6 +29,7 @@ coco = pygame.transform.scale(coco, (coco_largura, coco_altura))
 
 #Sons
 #bling = pygame.mixer.Sound('bling.wav')
+#pum = pygame.mixer.Sound('pum.wav')
 
 #Novos 
 
@@ -144,10 +145,11 @@ while game:
     hits = pygame.sprite.spritecollide(player, all_sapatos, True)
     for hit in hits:
         #bling.play()
-        score += 200
+        score += 100
 
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
+        #pum.play()
         score -= 100
 
     if score < 0:
