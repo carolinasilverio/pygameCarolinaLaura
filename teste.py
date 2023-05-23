@@ -21,8 +21,7 @@ sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
 sapato = pygame.transform.scale(sapato, (sapato_largura, sapato_altura))
 princesa = pygame.image.load('Pasta/Princesa.png')
 princesa = pygame.transform.scale(princesa, (princesa_largura, princesa_altura))
-pontuacao = pygame.font.SysFont(None, 28)
-scorefont = pygame.font.SysFont('arial', 28)
+scorefont = pygame.font.SysFont('impact', 48)
 #Novos 
 
 class princesaclasse(pygame.sprite.Sprite):
@@ -73,7 +72,7 @@ all_sapatos = pygame.sprite.Group()
 player = princesaclasse(princesa)
 all_sprites.add(player)
 
-for i in range(8):
+for i in range(10):
     sapatos = sapatoclasse(sapato)
     all_sprites.add(sapatos)
     all_sapatos.add(sapatos)
@@ -107,7 +106,7 @@ while game:
 
     hits = pygame.sprite.spritecollide(player, all_sapatos, True)
     for hit in hits:
-        game += 10
+        score += 100
     #Saídas
     window.fill((0, 0, 0)) 
     window.blit(fundo, (0,0))
@@ -115,7 +114,7 @@ while game:
 
     #Score
 
-    text_surface = scorefont.render('{:08d}'.format(score), True, (255, 255, 0))
+    text_surface = scorefont.render('{:08d}'.format(score), True, (255, 0, 132))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (largura/2, 10)
     window.blit(text_surface, text_rect)
