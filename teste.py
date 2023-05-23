@@ -2,6 +2,7 @@
 import pygame
 import random
 from os import path
+from init import init_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -105,10 +106,14 @@ all_cocos=pygame.sprite.Group()
 player = princesaclasse(princesa)
 all_sprites.add(player)
 
-
+INICIO = 2
 DONE = 0
 PLAYING = 1
-state = PLAYING
+state = INICIO
+
+if state == INICIO:
+    state = init_screen(window)
+    bling.play()
 
 for i in range(12):
     sapatos = sapatoclasse(sapato)
