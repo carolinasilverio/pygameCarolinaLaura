@@ -27,6 +27,9 @@ scorefont = pygame.font.SysFont('impact', 48)
 coco=pygame.image.load('Pasta/Cocô.png').convert_alpha()
 coco = pygame.transform.scale(coco, (coco_largura, coco_altura))
 
+#Sons
+#bling = pygame.mixer.Sound('bling.wav')
+
 #Novos 
 
 class princesaclasse(pygame.sprite.Sprite):
@@ -140,11 +143,12 @@ while game:
 
     hits = pygame.sprite.spritecollide(player, all_sapatos, True)
     for hit in hits:
-        score += 100
+        #bling.play()
+        score += 200
 
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
-        score -= 50
+        score -= 100
 
     if score < 0:
         game = False
