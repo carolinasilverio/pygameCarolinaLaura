@@ -99,6 +99,11 @@ all_cocos=pygame.sprite.Group()
 player = princesaclasse(princesa)
 all_sprites.add(player)
 
+
+DONE = 0
+PLAYING = 1
+state = PLAYING
+
 for i in range(8):
     sapatos = sapatoclasse(sapato)
     all_sprites.add(sapatos)
@@ -108,10 +113,6 @@ for i in range(8):
     cocos= cococlasse(coco)
     all_sprites.add(cocos)
     all_cocos.add(cocos)
-
-DONE = 0
-PLAYING = 1
-state = PLAYING
 
 score = 0
 
