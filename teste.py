@@ -51,7 +51,7 @@ class cococlasse(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, coco_largura)
+        self.rect.x = random.randint(0, largura-coco_largura)
         self.rect.y = random.randint(-100,-coco_altura)
         self.vx = random.randint(-3,3)
         self.vy = random.randint(2,9)
@@ -60,7 +60,7 @@ class cococlasse(pygame.sprite.Sprite):
         self.rect.x += self.vx
         self.rect.y += self.vy
         if self.rect.top > altura or self.rect.right  < 0 or self.rect.left > largura:
-            self.rect.x=random.randint(0, coco_largura)
+            self.rect.x=random.randint(0, largura-coco_largura)
             self.rect.y=random.randint(-100,-coco_altura)
             self.vx=random.randint(-3,3)
             self.vy=random.randint(2,9)
@@ -72,7 +72,7 @@ class sapatoclasse(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, sapato_largura)
+        self.rect.x = random.randint(0, largura-sapato_largura)
         self.rect.y = random.randint(-100,-sapato_altura)
         self.vx = random.randint(-3,3)
         self.vy = random.randint(2,9)
@@ -81,7 +81,7 @@ class sapatoclasse(pygame.sprite.Sprite):
         self.rect.x += self.vx
         self.rect.y += self.vy
         if self.rect.top > altura or self.rect.right  < 0 or self.rect.left > largura:
-            self.rect.x=random.randint(0, sapato_largura)
+            self.rect.x=random.randint(0, largura-sapato_largura)
             self.rect.y=random.randint(-100,-sapato_altura)
             self.vx=random.randint(-3,3)
             self.vy=random.randint(2,9)
