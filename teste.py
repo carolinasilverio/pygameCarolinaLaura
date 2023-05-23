@@ -115,10 +115,10 @@ while game:
 
     #Score
 
-    text_surface = pontuacao.render('{08d}'.format(score), True, (255, 255, 0))
-    text_rect = text_surface.get_rect()
-    text_rect.midtop = (largura/2, 10)
-    window.blit(text_surface, text_rect)
+    #text_surface = pontuacao.render((score), True, (255, 255, 0))
+    #text_rect = text_surface.get_rect()
+    #text_rect.midtop = (largura/2, 10)
+    #window.blit(text_surface, text_rect)
 
     #Atualiza jogo
     pygame.display.update()
