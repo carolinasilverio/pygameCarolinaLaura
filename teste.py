@@ -4,9 +4,12 @@ import random
 from os import path
 
 pygame.init()
+pygame.mixer.init()
 
+FPS = 35
 #Tela Inicial
 def init_screen(screen):
+
     clock = pygame.time.Clock()
     # Carrega o fundo da tela inicial
     comeco = pygame.image.load('Pasta/Começo.png').convert()
@@ -30,14 +33,15 @@ def init_screen(screen):
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 
-    return state
+    return game
+
 
 #Configurações
 largura = 920
 altura = 640
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
-
+init_screen(window)
 #Assets
 sapato_largura = 50
 sapato_altura = 38
@@ -56,8 +60,8 @@ coco=pygame.image.load('Pasta/Cocô.png').convert_alpha()
 coco = pygame.transform.scale(coco, (coco_largura, coco_altura))
 
 #Sons
-#bling = pygame.mixer.Sound('bling.wav')
-#pum = pygame.mixer.Sound('pum.wav')
+bling = pygame.mixer.Sound('Pasta/bling.wav')
+pum = pygame.mixer.Sound('Pasta/pum.wav')
 
 #Novos 
 
@@ -172,12 +176,12 @@ while game:
 
     hits = pygame.sprite.spritecollide(player, all_sapatos, True)
     for hit in hits:
-        #bling.play()
+        bling.play()
         score += 100
 
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
-        #pum.play()
+        pum.play()
         score -= 100
 
     if score < 0:
