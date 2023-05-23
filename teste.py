@@ -15,8 +15,8 @@ sapato_largura = 50
 sapato_altura = 38
 princesa_altura = 200
 princesa_largura = 152
-coco_largura = 5
-coco_altura = 4
+coco_largura = 50
+coco_altura = 48
 fundo = pygame.image.load('Pasta/Fundo.png').convert()
 font = pygame.font.SysFont(None, 48)
 sapato = pygame.image.load('Pasta/Sapato.png').convert_alpha()
@@ -25,6 +25,7 @@ princesa = pygame.image.load('Pasta/Princesa.png')
 princesa = pygame.transform.scale(princesa, (princesa_largura, princesa_altura))
 scorefont = pygame.font.SysFont('impact', 48)
 coco=pygame.image.load('Pasta/Cocô.png').convert_alpha()
+coco = pygame.transform.scale(coco, (coco_largura, coco_altura))
 
 #Novos 
 
@@ -143,6 +144,10 @@ while game:
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
         score -= 50
+
+    if score < 0:
+        game = False
+
 
     #Saídas
     window.fill((0, 0, 0)) 
