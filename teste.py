@@ -101,7 +101,7 @@ while game:
                     player.vx += 8
                 if event.key == pygame.K_RIGHT:
                     player.vx -= 8
-                    
+
     all_sprites.update()
 
     #Colisão
@@ -116,7 +116,7 @@ while game:
 
     #Score
 
-    text_surface = scorefont.render('{08d}'.format(score), True, (255, 0, 132))
+    text_surface = scorefont.render('{:08d}'.format(score), True, (255, 0, 132))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (largura/2, 10)
     window.blit(text_surface, text_rect)
