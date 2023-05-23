@@ -148,13 +148,20 @@ while game:
     for hit in hits:
         score += 100
         bling.play()
-        #all_sprites.add(sapato)
-        
+        for i in range(1):
+            sapatos = sapatoclasse(sapato)
+            all_sprites.add(sapatos)
+            all_sapatos.add(sapatos)
+
 
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
         score -= 100
         pum.play()
+        for i in range(1):
+            cocos= cococlasse(coco)
+            all_sprites.add(cocos)
+            all_cocos.add(cocos)
         #all_sprites.add(coco)
 
 
