@@ -22,7 +22,7 @@ sapato = pygame.transform.scale(sapato, (sapato_largura, sapato_altura))
 princesa = pygame.image.load('Pasta/Princesa.png')
 princesa = pygame.transform.scale(princesa, (princesa_largura, princesa_altura))
 pontuacao = pygame.font.SysFont(None, 28)
-
+scorefont = pygame.font.SysFont('arial', 28)
 #Novos 
 
 class princesaclasse(pygame.sprite.Sprite):
@@ -115,10 +115,10 @@ while game:
 
     #Score
 
-    #text_surface = pontuacao.render((score), True, (255, 255, 0))
-    #text_rect = text_surface.get_rect()
-    #text_rect.midtop = (largura/2, 10)
-    #window.blit(text_surface, text_rect)
+    text_surface = scorefont.render('{:08d}'.format(score), True, (255, 255, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (largura/2, 10)
+    window.blit(text_surface, text_rect)
 
     #Atualiza jogo
     pygame.display.update()
