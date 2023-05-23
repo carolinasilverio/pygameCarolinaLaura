@@ -91,7 +91,7 @@ game = True
 
 #Dados
 clock = pygame.time.Clock()
-FPS = 30
+FPS = 35
 
 all_sprites = pygame.sprite.Group()
 all_sapatos = pygame.sprite.Group()
@@ -104,12 +104,12 @@ DONE = 0
 PLAYING = 1
 state = PLAYING
 
-for i in range(8):
+for i in range(12):
     sapatos = sapatoclasse(sapato)
     all_sprites.add(sapatos)
     all_sapatos.add(sapatos)
 
-for i in range(8):
+for i in range(10):
     cocos= cococlasse(coco)
     all_sprites.add(cocos)
     all_cocos.add(cocos)
