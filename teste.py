@@ -1,8 +1,36 @@
 #Importa pacotes
 import pygame
 import random
+from os import path
 
 pygame.init()
+
+#Tela Inicial
+def init_screen(screen):
+    clock = pygame.time.Clock()
+    # Carrega o fundo da tela inicial
+    comeco = pygame.image.load('Pasta/Começo.png').convert()
+    comeco_rect = comeco.get_rect()
+    running = True
+    while running:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game=False
+                running = False
+
+            if event.type == pygame.KEYUP:
+                game=True
+                running = False
+
+        # A cada loop, redesenha o fundo e os sprites
+        screen.fill(0,0,0)
+        screen.blit(comeco, comeco_rect)
+
+        # Depois de desenhar tudo, inverte o display.
+        pygame.display.flip()
+
+    return state
 
 #Configurações
 largura = 920
