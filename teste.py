@@ -6,42 +6,12 @@ from os import path
 pygame.init()
 pygame.mixer.init()
 
-FPS = 35
-#Tela Inicial
-def init_screen(screen):
-
-    clock = pygame.time.Clock()
-    # Carrega o fundo da tela inicial
-    comeco = pygame.image.load('Pasta/Começo.png').convert()
-    comeco_rect = comeco.get_rect()
-    running = True
-    while running:
-        clock.tick(FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                game=False
-                running = False
-
-            if event.type == pygame.KEYUP:
-                game=True
-                running = False
-
-        # A cada loop, redesenha o fundo e os sprites
-        screen.fill(0,0,0)
-        screen.blit(comeco, comeco_rect)
-
-        # Depois de desenhar tudo, inverte o display.
-        pygame.display.flip()
-
-    return game
-
-
 #Configurações
 largura = 920
 altura = 640
 window = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jornada da Princesa')
-init_screen(window)
+
 #Assets
 sapato_largura = 50
 sapato_altura = 38
@@ -176,13 +146,17 @@ while game:
 
     hits = pygame.sprite.spritecollide(player, all_sapatos, True)
     for hit in hits:
-        bling.play()
         score += 100
+        bling.play()
+        #all_sprites.add(sapato)
+        
 
     hits_c = pygame.sprite.spritecollide(player, all_cocos, True)
     for hit_c in hits_c:
-        pum.play()
         score -= 100
+        pum.play()
+        #all_sprites.add(coco)
+
 
     if score < 0:
         game = False
