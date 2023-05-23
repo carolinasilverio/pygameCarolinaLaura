@@ -164,7 +164,6 @@ while game:
             all_cocos.add(cocos)
         #all_sprites.add(coco)
 
-
     if score < 0:
         game = False
 
