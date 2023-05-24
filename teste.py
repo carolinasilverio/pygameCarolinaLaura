@@ -30,6 +30,7 @@ scorefont = pygame.font.SysFont('impact', 48)
 coco=pygame.image.load('Pasta/Cocô.png').convert_alpha()
 coco = pygame.transform.scale(coco, (coco_largura, coco_altura))
 
+
 #Sons
 bling = pygame.mixer.Sound('Pasta/bling.wav')
 pum = pygame.mixer.Sound('Pasta/pum.wav')
@@ -52,6 +53,21 @@ class princesaclasse(pygame.sprite.Sprite):
             self.rect.right = largura
         if self.rect.left < 0:
             self.rect.left = 0
+
+    def troca(self,image):
+        self.image=image
+        self.rect = self.image.get_rect()
+        self.rect.centerx = largura/2
+        self.rect.bottom = altura-10
+        self.vx = 0
+
+    def updatetroca(self):
+        self.rect.x += self.vx
+        if self.rect.right > largura:
+            self.rect.right = largura
+        if self.rect.left < 0:
+            self.rect.left = 0
+
 
 class cococlasse(pygame.sprite.Sprite):
     def __init__(self,img):
@@ -169,10 +185,14 @@ while game:
             all_cocos.add(cocos)
         #all_sprites.add(coco)
 
-    if score < 0:
+
+        
+    if score<0:
         game = False
 
-
+    
+    
+    
     #Saídas
     window.fill((0, 0, 0)) 
     window.blit(fundo, (0,0))
